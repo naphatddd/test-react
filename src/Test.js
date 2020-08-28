@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
-import Header from "./components/Header";
-import Mornitor from "./components/mornitor/Mornitor";
-import Footer from "./components/Footer";
-import axios from "axios";
-
+// import "./App.css";
+// import Header from "./components/Header";
+// import Mornitor from "./components/mornitor/Mornitor";
+// import Footer from "./components/Footer";
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -54,23 +52,20 @@ export class App extends Component {
     //       },
     //     ],
     //   });
-
-    // fetch("http://127.0.0.1:3001/products", { method: "GET" })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     this.setState({products: res});
-    //   });
-    axios.get("http://127.0.0.1:3001/products").then((res) => {
-      this.setState({ products: res.data });
-    });
+    fetch("http://110.170.148.88/api/shop", { method: "GET" })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({products: res});
+      });
   }
 
   render() {
     return (
       <div>
-        <Header />
+          {this.state.products}
+        {/* <Header />
         <Mornitor products={this.state.products} />
-        <Footer company="Naphat" email="naphat.d@gmail.com" />
+        <Footer company="Naphat" email="naphat.d@gmail.com" /> */}
       </div>
     );
   }
